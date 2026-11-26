@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#064b35">
+  <meta name="description" content="A formal digital invitation to an AIESEC event.">
+  <title>AIKU | 23rd Dinner Invitaion Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <header class="site-header">
+    <div class="hero-logo">
+      <img src="assets/images/White-Black-Logo.png" alt="AIESEC Logo" class="aiesec-logo">
+    </div>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#invitation">Invitation</a>
+      <a href="#location">Location</a>
+      <a href="#details">Details</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+    <div class="music-control" id="musicControl" hidden>
+      <label for="musicVolume">♫ Jazz</label>
+
+      <input
+        type="range"
+        id="musicVolume"
+        min="0"
+        max="1"
+        step="0.05"
+        value="0.25"
+        aria-label="Background music volume"
+      >
+    </div>
+    <audio id="backgroundMusic" loop preload="none">
+      <source src="assets/audio/Maroon_Memories.mp3" type="audio/mpeg">
+    </audio>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell" aria-labelledby="heroTitle">
+      <div class="hero-glow"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span class="eyebrow-line"></span> AIESEC PRESENTS <span class="eyebrow-line"></span></p>
+        <p class="hero-kicker">A special evening awaits</p>
+        <h1 id="heroTitle">AIKU DINNER</h1>
+        <p class="hero-copy"><Cap>C</Cap>elebration of people, purpose and outstanding aiesec achievement.</p>
+        <a class="button button-gold" href="#invitation" id="openInvitation">
+          Open invitation 
+        </a>
+      </div>
+    </section>
+
+    <section class="invitation-section section-shell section-light" id="invitation">
+      <div class="invitation-card reveal">
+        <div class="card-ornament ornament-top">✳</div>
+        <h2>Dear <span class="editable" data-edit="delegate">Esteemed Delegate</span>,</h2>
+        <p class="invitation-message">It is our pleasure to invite you to join us for an evening dedicated to recognising the dedication, leadership and impact that move our community forward.</p>
+        <p class="invitation-message">Your presence will make this celebration even more meaningful as we come together to honour achievements, share memorable moments and look ahead to what we can accomplish together.</p>
+        <p class="signature">We look forward to welcoming you.</p>
+        <div class="signature-rule"></div>
+        <p class="signature-name">The Organising Committee</p>
+        <p class="signature-role">AIESEC <span class="editable" data-edit="localCommittee">in Kenyatta University</span></p>
+        <div class="card-ornament ornament-bottom">✳</div>
+      </div>
+    </section>
+
+    <section class="rsvp-section section-shell" id="rsvp">
+      <div class="rsvp-content reveal">
+        <p class="eyebrow">KINDLY RESPOND</p>
+        <h2 class="rsvp-title">Will you be Attending?</h2>
+        <p class="rsvp-copy">We would be delighted to have you with us. Kindly let us know whether you will be attending.</p>
+        <div class="rsvp-actions" id="rsvpArena">
+          <button class="button button-gold" id="yesButton" type="button">Yes, I'll be there </button>
+          <button class="button button-outline" id="noButton" type="button">No, I can't attend</button>
+        </div>
+        <div class="attendance-form-wrap" id="attendanceFormWrap" hidden>
+
+          <form id="attendanceForm"
+                action="https://formspree.io/f/mljbzvzo"
+                method="POST">
+
+            <h3>Confirm your attendance</h3>
+
+            <p>We are delighted that you will be joining us.</p>
+
+            <label for="delegateName">Full name</label>
+            <input
+              type="text"
+              id="delegateName"
+              name="name"
+              placeholder="Enter your full name"
+              autocomplete="name"
+              required
+            >
+
+            <label for="delegateEmail">Email address</label>
+            <input
+              type="email"
+              id="delegateEmail"
+              name="email"
+              placeholder="Enter your email"
+              autocomplete="email"
+              required
+            >
+
+            <label for="delegateContact">Contact number</label>
+            <input
+              type="tel"
+              id="delegateContact"
+              name="contact"
+              placeholder="+254..."
+              autocomplete="tel"
+              required
+            >
+
+            <div class="form-group">
+                <label for="aiesecStatus">Are you an AIESECer?</label>
+
+                <select id="aiesecStatus" name="aiesec_status" required>
+                    <option value="">Select an option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="membershipTypeGroup" hidden>
+                <label for="membershipType">Which category describes you?</label>
+
+                <select id="membershipType" name="membership_type">
+                    <option value="">Select your category</option>
+                    <option value="AIESEC Member">AIESEC Member</option>
+                    <option value="AIESEC Alumni">AIESEC Alumni</option>
+                </select>
+            </div>
+
+            <input
+              type="hidden"
+              name="attendance"
+              value="Attending"
+            >
+
+            <button class="button button-gold" type="submit">
+              Submit confirmation
+            </button>
+
+            <p id="formStatus" role="status" aria-live="polite"></p>
+
+          </form>
+
+        </div>
+        <p class="playful-hint" id="playfulHint" aria-live="polite">Psst… the "No" button is feeling a little shy.</p>
+        <div class="response-message" id="responseMessage" role="status" aria-live="polite" hidden>
+          <span class="response-icon" id="responseIcon">✦</span>
+          <h3 id="responseTitle">Thank you for confirming!</h3>
+          <p id="responseText">We look forward to celebrating with you.</p>
+          <button class="text-link reset-response" id="changeResponse" type="button">Change my response</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-small">AIESEC · Activating leadership · Living diversity · Enjoying participation · Striving for excellence · Acting sustainably · Demonstrating integrity </p>
+    <div class="footer-brand-lockup">
+        <img src="assets/images/White-Black-Logo.png"
+            alt="AIESEC Logo"
+            class="footer-logo">
+
+        <span class="footer-affiliation">
+            in Kenyatta University
+        </span>
+    </div>
+    
+    <a href="#top" class="back-top">BACK TO TOP ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
