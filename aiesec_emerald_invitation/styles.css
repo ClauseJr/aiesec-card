@@ -145,6 +145,91 @@ h1 em, h2 em { color: var(--gold-light); font-weight: 500; }
 .invitation-card h2 { font-size: clamp(32px, 5vw, 48px); margin: 0 0 24px; }
 .invitation-card h2 span { color: var(--emerald); }
 .invitation-message { color: #59635c; font-size: 14px; line-height: 1.95; max-width: 540px; margin: 0 auto 16px; }
+
+/* INVITATION ACTION BUTTONS */
+
+.invitation-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: nowrap;
+    margin-top: 35px;
+}
+
+.invitation-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    min-height: 52px;
+    padding: 14px 24px;
+
+    box-sizing: border-box;
+    border-radius: 2px;
+
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* RSVP button */
+
+.invitation-rsvp {
+    background: var(--gold-light);
+    color: #031f17;
+    border: 1px solid var(--gold-light);
+}
+
+.invitation-rsvp:hover {
+    background: transparent;
+    color: var(--gold-light);
+    transform: translateY(-3px);
+}
+
+/* WhatsApp button */
+
+.invitation-whatsapp {
+    background: transparent;
+    color: var(--emerald);
+    border: 1px solid #c9a34a80;
+}
+
+.invitation-whatsapp:hover {
+    background: var(--emerald);
+    color: white;
+    border-color: var(--emerald);
+    transform: translateY(-3px);
+}
+
+/* Mobile responsiveness */
+
+@media (max-width: 600px) {
+    .invitation-actions {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .invitation-action {
+        width: 100%;
+        max-width: 290px;
+        min-height: 50px;
+    }
+}
+
+
 .signature { font-family: var(--serif); font-style: italic; color: var(--emerald); font-size: 18px; margin: 32px 0 12px; }
 .signature-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 12px; }
 .signature-name { font-size: 10px; font-weight: 700; letter-spacing: .12em; margin: 0 0 5px; }
@@ -517,7 +602,7 @@ h1 em, h2 em { color: var(--gold-light); font-weight: 500; }
 
 @media (max-width: 600px) {
     .rsvp-content .rsvp-title {
-        font-size: clamp(21px, 6vw, 34px);
+        font-size: clamp(31px, 6vw, 44px);
         letter-spacing: -0.04em;
     }
 

@@ -18,6 +18,10 @@ const aiesecStatus = document.getElementById("aiesecStatus");
 const membershipTypeGroup = document.getElementById("membershipTypeGroup");
 const membershipType = document.getElementById("membershipType");
 
+const invitationRsvpButton = document.getElementById("invitationRsvpButton");
+
+let rsvpNavigationUnlocked = false;
+
 let invitationOpened = false;
 let musicStarted = false;
 let musicFinished = false;
@@ -36,7 +40,7 @@ music.loop = true;
 
 // Prevent mouse wheel scrolling before opening.
 function preventLockedScroll(event) {
-  if (!invitationOpened) {
+  if (!rsvpNavigationUnlocked) {
     event.preventDefault();
   }
 }
@@ -52,7 +56,7 @@ window.addEventListener("touchmove", preventLockedScroll, {
 
 // Prevent keyboard scrolling before opening.
 window.addEventListener("keydown", (event) => {
-  if (!invitationOpened) {
+  if (!rsvpNavigationUnlocked) {
     const scrollKeys = [
       "ArrowDown",
       "ArrowUp",
@@ -413,4 +417,22 @@ aiesecStatus.addEventListener("change", () => {
         membershipType.required = false;
         membershipType.value = "";
     }
+});
+
+invitationRsvpButton.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  if (rsvpNavigationUnlocked) return;
+
+  // Unlock normal page scrolling.
+  rsvpNavigationUnlocked = true;
+
+  document.documentElement.classList.remove("invitation-locked");
+  document.body.classList.remove("invitation-locked");
+
+  // Smoothly take the visitor to the RSVP section.
+  document.getElementById("rsvp").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 });
